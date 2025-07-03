@@ -1,17 +1,67 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
-const Project = () => {
-  const [projectItems, setProjectItems] = useState([]);
-  const [likedItems, setLikedItems] = useState({});
+import portfolio1 from "../assets/image/portfolio.jpg";
+import portfolio2 from "../assets/image/portfolio-2.jpg";
+import portfolio3 from "../assets/image/portfolio-3.jpeg";
+import portfolio4 from "../assets/image/portfolio-4.jpeg";
+import portfolio5 from "../assets/image/portfolio-5.jpeg";
+import portfolio6 from "../assets/image/portfolio-6.jpeg";
 
-  useEffect(() => {
-    fetch("/Project.json")
-      .then((res) => res.json())
-      .then((data) => setProjectItems(data))
-      .catch((err) => console.error("Failed to load JSON:", err));
-  }, []);
+const portfolioData = [
+  {
+    id: 1,
+    title: "NFT Dashboard Application Development.",
+    type: "Gallery",
+    image: portfolio1,
+    isProtected: false,
+    isExternal: false,
+  },
+  {
+    id: 2,
+    title: "Travel App Design Creativity & Application.",
+    type: "External Link",
+    image: portfolio2,
+    isProtected: false,
+    isExternal: true,
+  },
+  {
+    id: 3,
+    title: "Online Food Delivery Mobile App Design.",
+    type: "External Link",
+    image: portfolio3,
+    isProtected: false,
+    isExternal: true,
+  },
+  {
+    id: 4,
+    title: "Crypto Wallet UI/UX Interface Design.",
+    type: "Gallery",
+    image: portfolio4,
+    isProtected: false,
+    isExternal: false,
+  },
+  {
+    id: 5,
+    title: "Fitness Tracker App with Daily Goals.",
+    type: "External Link",
+    image: portfolio5,
+    isProtected: false,
+    isExternal: true,
+  },
+  {
+    id: 6,
+    title: "Protected Admin Dashboard Access.",
+    type: "Password Protected",
+    image: portfolio6,
+    isProtected: true,
+    isExternal: false,
+  },
+];
+
+const Project = () => {
+  const [likedItems, setLikedItems] = useState({});
 
   const toggleLike = (id) => {
     setLikedItems((prev) => ({
@@ -33,7 +83,7 @@ const Project = () => {
       </h1>
 
       <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {projectItems.map((item) => (
+        {portfolioData.map((item) => (
           <div
             key={item.id}
             className="bg-[#212428] p-4 rounded-2xl shadow-[0_0_20px_rgba(200,200,200,0.08)] flex flex-col justify-between text-gray-400"
